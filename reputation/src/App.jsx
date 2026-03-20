@@ -1,8 +1,10 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { StarIcon, PlusSignIcon } from '@hugeicons/core-free-icons';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import ReviewCard from './components/ReviewCard';
+import { reviews } from './data/reviews';
 
 export default function App() {
   return (
@@ -32,14 +34,27 @@ export default function App() {
           }
         />
 
-        <Box sx={{ flex: 1, bgcolor: '#FAFAFA', p: 3, overflow: 'auto' }}>
-          <Box sx={{
-            border: '2px dashed #EEEEEE', borderRadius: '12px',
-            height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <Typography sx={{ fontSize: 14, color: '#BFBFBF' }}>
-              Contenu de la page Réputation
-            </Typography>
+        <Box sx={{
+          flex: 1, bgcolor: '#FAFAFA', overflow: 'auto',
+          '&::-webkit-scrollbar': { width: 6 },
+          '&::-webkit-scrollbar-thumb': { bgcolor: '#E0E0E0', borderRadius: 3 },
+        }}>
+          <Box sx={{ maxWidth: 720, mx: 'auto', py: 3, px: 3, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+            {reviews.map((review) => (
+              <ReviewCard
+                key={review.id}
+                reviewerName={review.reviewerName}
+                rating={review.rating}
+                date={review.date}
+                text={review.text}
+                businessName={review.businessName}
+                businessAddress={review.businessAddress}
+                replied={review.replied}
+                replyText={review.replyText}
+                replyDate={review.replyDate}
+                onReplyWithAI={() => console.log('Reply with AI:', review.id)}
+              />
+            ))}
           </Box>
         </Box>
       </Box>
