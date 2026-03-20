@@ -1,9 +1,10 @@
 import { Box, Typography, IconButton, Button, TextField } from '@mui/material';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
-  StarIcon, SparklesIcon, MoreVerticalIcon, SentIcon,
+  SparklesIcon, MoreVerticalIcon, SentIcon,
   CheckmarkCircle01Icon, Clock01Icon,
 } from '@hugeicons/core-free-icons';
+import StarRating from './StarRating';
 
 function GoogleIcon() {
   return (
@@ -16,22 +17,12 @@ function GoogleIcon() {
   );
 }
 
-function StarRating({ rating }) {
-  return (
-    <Box sx={{ display: 'flex', gap: '2px' }}>
-      {[1, 2, 3, 4, 5].map((i) => (
-        <HugeiconsIcon key={i} icon={StarIcon} size={16} color={i <= rating ? '#F79009' : '#E0E0E0'} />
-      ))}
-    </Box>
-  );
-}
-
 export default function ReviewDetail({ review }) {
   if (!review) {
     return (
       <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Typography sx={{ fontSize: 14, color: '#A0A0A0' }}>
-          Sélectionnez un avis pour le consulter
+        <Typography sx={{ fontSize: 14, color: '#BFBFBF' }}>
+          Sélectionnez un avis
         </Typography>
       </Box>
     );
@@ -43,95 +34,115 @@ export default function ReviewDetail({ review }) {
     <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       {/* Scrollable content */}
       <Box sx={{
-        flex: 1, overflow: 'auto', px: 3, py: 3,
+        flex: 1, overflow: 'auto',
         '&::-webkit-scrollbar': { width: 4 },
         '&::-webkit-scrollbar-thumb': { bgcolor: '#E0E0E0', borderRadius: 2 },
       }}>
-        {/* Business source */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
-          <GoogleIcon />
-          <Box>
-            <Typography sx={{ fontSize: 13, fontWeight: 500, color: '#171717', lineHeight: 1.3 }}>
-              {businessName}
-            </Typography>
-            <Typography sx={{ fontSize: 12, color: '#A0A0A0', lineHeight: 1.3 }}>
-              {businessAddress}
-            </Typography>
-          </Box>
-        </Box>
-
-        {/* Reviewer header */}
-        <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', mb: 2 }}>
-          <Box>
-            <Typography sx={{ fontSize: 18, fontWeight: 600, color: '#171717', lineHeight: 1.3, mb: 0.75 }}>
+        {/* ─── Top section: reviewer identity ─── */}
+        <Box sx={{ px: 4, pt: 4, pb: 3 }}>
+          {/* Name + status */}
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', mb: 2 }}>
+            <Typography sx={{ fontSize: 20, fontWeight: 600, color: '#171717', lineHeight: 1.2 }}>
               {reviewerName}
             </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <StarRating rating={rating} />
-              <Typography sx={{ fontSize: 12, color: '#A0A0A0' }}>
-                {date}
-              </Typography>
-            </Box>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             {replied ? (
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px', bgcolor: '#ECFDF3', px: 1.25, py: 0.5, borderRadius: '6px' }}>
+              <Box sx={{
+                display: 'inline-flex', alignItems: 'center', gap: '5px',
+                bgcolor: '#ECFDF3', px: 1.25, py: 0.5, borderRadius: '6px', flexShrink: 0,
+              }}>
                 <HugeiconsIcon icon={CheckmarkCircle01Icon} size={13} color="#039855" />
                 <Typography sx={{ fontSize: 12, fontWeight: 500, color: '#039855' }}>Répondu</Typography>
               </Box>
             ) : (
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: '5px', bgcolor: '#FEF3F2', px: 1.25, py: 0.5, borderRadius: '6px' }}>
+              <Box sx={{
+                display: 'inline-flex', alignItems: 'center', gap: '5px',
+                bgcolor: '#FEF3F2', px: 1.25, py: 0.5, borderRadius: '6px', flexShrink: 0,
+              }}>
                 <HugeiconsIcon icon={Clock01Icon} size={13} color="#D92D20" />
                 <Typography sx={{ fontSize: 12, fontWeight: 500, color: '#D92D20' }}>Non répondu</Typography>
               </Box>
             )}
           </Box>
+
+          {/* Stars + date + source — single meta line */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
+            <StarRating rating={rating} size={16} />
+            <Box sx={{ width: 1, height: 14, bgcolor: '#EEEEEE' }} />
+            <Typography sx={{ fontSize: 12.5, color: '#A0A0A0' }}>{date}</Typography>
+            <Box sx={{ width: 1, height: 14, bgcolor: '#EEEEEE' }} />
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+              <GoogleIcon />
+              <Typography sx={{ fontSize: 12.5, color: '#A0A0A0' }}>
+                {businessName}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
-        {/* Review text */}
-        {text ? (
-          <Typography sx={{ fontSize: 14, color: '#4A4A4A', lineHeight: 1.7, mb: 3 }}>
-            {text}
-          </Typography>
-        ) : (
-          <Typography sx={{ fontSize: 13, color: '#A0A0A0', fontStyle: 'italic', mb: 3 }}>
-            Aucun commentaire — note uniquement
-          </Typography>
-        )}
+        {/* ─── Divider ─── */}
+        <Box sx={{ mx: 4, borderTop: '1px solid #F0F0F0' }} />
 
-        {/* Reply section */}
+        {/* ─── Review body ─── */}
+        <Box sx={{ px: 4, py: 3 }}>
+          {text ? (
+            <Typography sx={{ fontSize: 14.5, color: '#4A4A4A', lineHeight: 1.8 }}>
+              {text}
+            </Typography>
+          ) : (
+            <Typography sx={{ fontSize: 13.5, color: '#BFBFBF', fontStyle: 'italic' }}>
+              Aucun commentaire — note uniquement
+            </Typography>
+          )}
+        </Box>
+
+        {/* ─── Reply (if exists) ─── */}
         {replied && replyText && (
-          <Box sx={{
-            p: 2.5, bgcolor: '#FAFAFA', borderRadius: '10px', border: '1px solid #F0F0F0',
-          }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
-                <HugeiconsIcon icon={SentIcon} size={14} color="#6B6B6B" />
-                <Typography sx={{ fontSize: 12, fontWeight: 600, color: '#4A4A4A' }}>
-                  Votre réponse
+          <>
+            <Box sx={{ mx: 4, borderTop: '1px solid #F0F0F0' }} />
+            <Box sx={{ px: 4, py: 3 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                  <HugeiconsIcon icon={SentIcon} size={14} color="#858585" />
+                  <Typography sx={{ fontSize: 13, fontWeight: 600, color: '#4A4A4A' }}>
+                    Votre réponse
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
+                  {replyDate && (
+                    <Typography sx={{ fontSize: 11, color: '#BFBFBF' }}>{replyDate}</Typography>
+                  )}
+                  <IconButton size="small" sx={{ p: 0.25, '&:hover': { bgcolor: '#F5F5F5' } }}>
+                    <HugeiconsIcon icon={MoreVerticalIcon} size={16} color="#BFBFBF" />
+                  </IconButton>
+                </Box>
+              </Box>
+              <Box sx={{
+                p: 2.5, bgcolor: '#FAFAFA', borderRadius: '10px',
+              }}>
+                <Typography sx={{ fontSize: 13.5, color: '#6B6B6B', lineHeight: 1.7 }}>
+                  {replyText}
                 </Typography>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                {replyDate && (
-                  <Typography sx={{ fontSize: 11, color: '#A0A0A0' }}>{replyDate}</Typography>
-                )}
-                <IconButton size="small" sx={{ p: 0.25 }}>
-                  <HugeiconsIcon icon={MoreVerticalIcon} size={16} color="#A0A0A0" />
-                </IconButton>
-              </Box>
             </Box>
-            <Typography sx={{ fontSize: 13.5, color: '#4A4A4A', lineHeight: 1.7 }}>
-              {replyText}
-            </Typography>
-          </Box>
+          </>
         )}
+
+        {/* ─── Business details (contextual, at the bottom) ─── */}
+        <Box sx={{ mx: 4, borderTop: '1px solid #F0F0F0' }} />
+        <Box sx={{ px: 4, py: 2.5 }}>
+          <Typography sx={{ fontSize: 11, fontWeight: 500, color: '#BFBFBF', textTransform: 'uppercase', letterSpacing: '0.04em', mb: 0.75 }}>
+            Établissement
+          </Typography>
+          <Typography sx={{ fontSize: 13, color: '#6B6B6B', lineHeight: 1.4 }}>
+            {businessName} — {businessAddress}
+          </Typography>
+        </Box>
       </Box>
 
-      {/* Reply bar — sticky bottom */}
+      {/* ─── Reply composer (sticky bottom) ─── */}
       {!replied && (
         <Box sx={{
-          px: 3, py: 2, borderTop: '1px solid #F0F0F0', bgcolor: '#FFFFFF',
-          display: 'flex', flexDirection: 'column', gap: 1.5,
+          px: 4, py: 2.5, borderTop: '1px solid #F0F0F0', bgcolor: '#FFFFFF',
         }}>
           <TextField
             multiline
@@ -140,9 +151,9 @@ export default function ReviewDetail({ review }) {
             placeholder="Écrivez votre réponse..."
             fullWidth
             sx={{
+              mb: 1.5,
               '& .MuiOutlinedInput-root': {
-                borderRadius: '10px',
-                fontSize: 13.5,
+                borderRadius: '10px', fontSize: 13.5, bgcolor: '#FAFAFA',
                 '& fieldset': { borderColor: '#F0F0F0' },
                 '&:hover fieldset': { borderColor: '#E0E0E0' },
                 '&.Mui-focused fieldset': { borderColor: '#D1D1D1' },
@@ -155,18 +166,20 @@ export default function ReviewDetail({ review }) {
               sx={{
                 bgcolor: '#171717', color: '#FFFFFF',
                 fontSize: 13, fontWeight: 600, borderRadius: '8px',
-                px: 2, py: 0.75, textTransform: 'none',
+                px: 2.5, py: 1, textTransform: 'none',
                 '&:hover': { bgcolor: '#2A2A2A' },
               }}
             >
               Générer avec l'IA
             </Button>
             <Button
-              startIcon={<HugeiconsIcon icon={SentIcon} size={15} />}
+              variant="outlined"
+              startIcon={<HugeiconsIcon icon={SentIcon} size={14} />}
               sx={{
-                color: '#6B6B6B', fontSize: 13, fontWeight: 500,
-                textTransform: 'none', borderRadius: '8px',
-                '&:hover': { bgcolor: '#F5F5F5' },
+                borderColor: '#EEEEEE', color: '#6B6B6B',
+                fontSize: 13, fontWeight: 500, textTransform: 'none',
+                borderRadius: '8px', px: 2, py: 0.75,
+                '&:hover': { borderColor: '#D1D1D1', bgcolor: '#FAFAFA' },
               }}
             >
               Envoyer
