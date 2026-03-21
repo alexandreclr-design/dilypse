@@ -1,110 +1,138 @@
-export const reviews = [
-  {
-    id: 1, reviewerName: 'Maxime Beaudoin', rating: 5, date: '02 févr. 2026',
-    text: '(Translated by Google) Arthur provided excellent service. Thank you! :D (Original) Super service d\'Arthur. Merci! :D',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Merci beaucoup pour votre avis élogieux ! Nous sommes ravis d\'apprendre qu\'Arthur vous a offert un excellent service. Votre satisfaction est importante pour nous, et vos encouragements sont très appréciés !',
-    replyDate: '03 févr. 2026',
-  },
-  {
-    id: 2, reviewerName: 'Leo De Smedt', rating: 5, date: '19 janv. 2026',
-    text: 'I had a really good experience with the team ! Nice product and nice service',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Thank you for the 5-star review! We\'re happy to hear that you had a really good experience with our team and enjoyed both the product and service.',
-    replyDate: '20 janv. 2026',
-  },
-  {
-    id: 3, reviewerName: 'Pierre Lévesque', rating: 5, date: '19 janv. 2026',
-    text: '',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Merci beaucoup pour votre évaluation de 5 étoiles ! Nous sommes heureux que vous ayez eu une expérience positive.',
-    replyDate: '20 janv. 2026',
-  },
-  {
-    id: 4, reviewerName: 'Myriam Samuel', rating: 4, date: '30 déc. 2025',
-    text: 'Très bon service dans l\'ensemble. L\'équipe est réactive et professionnelle. Petit bémol sur le temps d\'attente initial mais rien de rédhibitoire.',
-    businessName: 'Dilypse Paris', businessAddress: '100 Rue de Longchamp, Paris',
-    replied: false, replyText: null, replyDate: null,
-  },
-  {
-    id: 5, reviewerName: 'Jean-François Tremblay', rating: 2, date: '28 déc. 2025',
-    text: 'L\'outil est correct mais le support client laisse à désirer. J\'ai attendu 3 jours pour une réponse à mon ticket.',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: false, replyText: null, replyDate: null,
-  },
-  {
-    id: 6, reviewerName: 'Sophie Lavoie', rating: 5, date: '22 déc. 2025',
-    text: 'Excellent outil pour gérer notre réputation en ligne. L\'IA pour les réponses est bluffante. On a gagné un temps fou !',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Merci Sophie ! Nous sommes ravis que notre outil d\'IA vous fasse gagner du temps. C\'est exactement notre mission.',
-    replyDate: '23 déc. 2025',
-  },
-  {
-    id: 7, reviewerName: 'Marc-Antoine Dubois', rating: 1, date: '15 déc. 2025',
-    text: 'Très déçu. L\'intégration avec Google My Business ne fonctionne pas correctement. J\'ai perdu des données.',
-    businessName: 'Dilypse Paris', businessAddress: '100 Rue de Longchamp, Paris',
-    replied: false, replyText: null, replyDate: null,
-  },
-  {
-    id: 8, reviewerName: 'Camille Bergeron', rating: 5, date: '10 déc. 2025',
-    text: 'Notre agence utilise Dilypse pour tous nos clients. Le gain de temps est incroyable. La fonctionnalité de réponse IA est un game changer.',
-    businessName: 'Dilypse Montréal', businessAddress: '500 Place d\'Armes, Montréal',
-    replied: true,
-    replyText: 'Merci Camille ! Nous sommes honorés que votre agence nous fasse confiance pour la gestion de vos clients.',
-    replyDate: '11 déc. 2025',
-  },
-  {
-    id: 9, reviewerName: 'Émilie Côté', rating: 3, date: '05 déc. 2025',
-    text: 'L\'outil est bien mais manque encore de fonctionnalités avancées pour les rapports. J\'attends la prochaine mise à jour.',
-    businessName: 'Dilypse Montréal', businessAddress: '500 Place d\'Armes, Montréal',
-    replied: false, replyText: null, replyDate: null,
-  },
-  {
-    id: 10, reviewerName: 'Alexandre Girard', rating: 5, date: '01 déc. 2025',
-    text: 'Service impeccable du début à la fin. L\'équipe de Brossard est top. Merci pour votre aide sur notre migration.',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Merci Alexandre ! La migration était un gros projet et nous sommes contents d\'avoir pu vous accompagner.',
-    replyDate: '02 déc. 2025',
-  },
-  {
-    id: 11, reviewerName: 'Nathalie Bouchard', rating: 4, date: '28 nov. 2025',
-    text: 'Bonne plateforme, interface moderne. Le onboarding pourrait être amélioré pour les nouveaux utilisateurs.',
-    businessName: 'Dilypse Paris', businessAddress: '100 Rue de Longchamp, Paris',
-    replied: true,
-    replyText: 'Merci Nathalie ! Nous prenons note de votre retour sur le onboarding, c\'est dans notre roadmap Q1 2026.',
-    replyDate: '29 nov. 2025',
-  },
-  {
-    id: 12, reviewerName: 'François Pelletier', rating: 1, date: '20 nov. 2025',
-    text: 'Prix trop élevé pour ce que c\'est. Il existe des alternatives gratuites qui font le même travail.',
-    businessName: 'Dilypse Montréal', businessAddress: '500 Place d\'Armes, Montréal',
-    replied: false, replyText: null, replyDate: null,
-  },
-  {
-    id: 13, reviewerName: 'Isabelle Martin', rating: 5, date: '15 nov. 2025',
-    text: 'On utilise Dilypse depuis 6 mois et c\'est devenu indispensable. La réponse automatique aux avis nous fait économiser des heures chaque semaine.',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Merci Isabelle ! 6 mois déjà, le temps passe vite. Ravi que Dilypse soit devenu un outil essentiel pour vous.',
-    replyDate: '16 nov. 2025',
-  },
-  {
-    id: 14, reviewerName: 'Thomas Lafleur', rating: 3, date: '10 nov. 2025',
-    text: 'Correcte mais pas exceptionnel. Le dashboard est un peu lent quand on a beaucoup d\'établissements.',
-    businessName: 'Dilypse Montréal', businessAddress: '500 Place d\'Armes, Montréal',
-    replied: false, replyText: null, replyDate: null,
-  },
-  {
-    id: 15, reviewerName: 'Marie-Ève Gagnon', rating: 5, date: '05 nov. 2025',
-    text: 'Wow! La nouvelle interface est magnifique. Bravo à l\'équipe de design. C\'est un plaisir de travailler avec cet outil.',
-    businessName: 'Dilypse Brossard', businessAddress: '2000 Rue De L\'Éclipse #800, Brossard',
-    replied: true,
-    replyText: 'Merci Marie-Ève ! On transmet à l\'équipe design, ça va leur faire plaisir 😊',
-    replyDate: '06 nov. 2025',
-  },
+// ─── Establishments (50) ───
+
+const cities = [
+  'Montréal', 'Brossard', 'Laval', 'Longueuil', 'Québec', 'Gatineau', 'Sherbrooke',
+  'Trois-Rivières', 'Chicoutimi', 'Drummondville', 'Saint-Jérôme', 'Granby',
+  'Saint-Hyacinthe', 'Rimouski', 'Victoriaville', 'Shawinigan', 'Repentigny',
+  'Terrebonne', 'Blainville', 'Mirabel', 'Mascouche', 'Boisbriand', 'Joliette',
+  'Saint-Jean-sur-Richelieu', 'Chambly', 'Varennes', 'Beloeil', 'Candiac',
+  'Boucherville', 'Saint-Bruno', 'La Prairie', 'Sainte-Julie', 'Vaudreuil-Dorion',
+  'L\'Assomption', 'Sorel-Tracy', 'Salaberry-de-Valleyfield', 'Magog', 'Thetford Mines',
+  'Rivière-du-Loup', 'Matane', 'Alma', 'Rouyn-Noranda', 'Val-d\'Or', 'Amos',
+  'Sept-Îles', 'Baie-Comeau', 'Cowansville', 'Plessisville', 'Montmagny', 'Paris',
 ];
+
+const streets = [
+  '2000 Rue De L\'Éclipse #800', '1455 Rue Peel', '3333 Chemin de Chambly', '500 Place d\'Armes',
+  '780 Boulevard Lebourgneuf', '100 Rue Principale', '200 Rue King Ouest', '1500 Rue des Forges',
+  '345 Rue Racine Est', '400 Boulevard Saint-Joseph', '225 Rue de Martigny', '50 Rue Évangéline',
+  '1325 Rue des Cascades', '33 Rue de l\'Évêché', '85 Rue Notre-Dame', '100 Avenue de Grand-Mère',
+  '450 Boulevard Brien', '1200 Boulevard des Seigneurs', '500 Rue de la Gare', '13450 Rue de l\'Avenir',
+  '321 Montée Masson', '190 Chemin de la Grande-Côte', '500 Rue Saint-Charles', '340 Rue Champlain',
+  '1200 Rue Bourgogne', '2050 Route Marie-Victorin', '855 Rue Laurier', '50 Rue de Strasbourg',
+  '1001 Boulevard de Montarville', '1355 Rue Roberval', '100 Rue Édouard-VII', '1525 Chemin du Fer-à-Cheval',
+  '1200 Boulevard de la Cité', '500 Rue Dorval', '260 Rue du Roi', '85 Rue Salaberry', '900 Rue Principale',
+  '233 Rue Notre-Dame', '85 Boulevard de l\'Hôtel-de-Ville', '750 Avenue du Phare', '200 Rue des Pins',
+  '151 Avenue du Lac', '1200 Avenue Principale', '100 Rue Harricana', '800 Boulevard Laure',
+  '625 Boulevard La Salle', '100 Rue du Sud', '1700 Avenue Saint-Jean', '200 Rue Saint-Louis', '100 Rue de Longchamp',
+];
+
+export const establishmentData = cities.map((city, i) => ({
+  name: `Dilypse ${city}`,
+  address: `${streets[i]}, ${city}`,
+}));
+
+export const establishments = establishmentData.map(e => e.name);
+
+// ─── Reviews (200+) ───
+
+const firstNames = [
+  'Maxime', 'Sophie', 'Jean-François', 'Marie-Ève', 'Alexandre', 'Camille', 'Pierre',
+  'Isabelle', 'Marc-Antoine', 'Nathalie', 'Thomas', 'Émilie', 'François', 'Julie',
+  'Mathieu', 'Catherine', 'Sébastien', 'Véronique', 'David', 'Mélanie', 'Patrick',
+  'Stéphanie', 'Nicolas', 'Caroline', 'Benoît', 'Geneviève', 'Louis', 'Audrey',
+  'Olivier', 'Karine', 'Laurent', 'Myriam', 'Leo', 'Chantal', 'Samuel', 'Diane',
+];
+
+const lastNames = [
+  'Beaudoin', 'Lavoie', 'Tremblay', 'Gagnon', 'Girard', 'Bergeron', 'Dubois',
+  'Lévesque', 'Pelletier', 'Martin', 'Bouchard', 'Côté', 'De Smedt', 'Samuel',
+  'Roy', 'Gauthier', 'Morin', 'Lafleur', 'Fortin', 'Gagné', 'Ouellet', 'Paradis',
+  'Bélanger', 'Caron', 'Nadeau', 'Charron', 'Simard', 'Poirier', 'Dufour', 'Savard',
+];
+
+const positiveTexts = [
+  'Excellent service ! L\'équipe est très professionnelle et réactive. Je recommande fortement.',
+  'Super expérience du début à la fin. Le produit répond parfaitement à nos besoins.',
+  'L\'outil est incroyable pour gérer notre réputation en ligne. Gain de temps énorme.',
+  'Merci à toute l\'équipe pour leur accompagnement. Le onboarding était impeccable.',
+  'Notre agence utilise Dilypse depuis un an et on ne pourrait plus s\'en passer.',
+  'La fonctionnalité de réponse IA est bluffante. Nos clients sont ravis.',
+  'Interface moderne et intuitive. Rien à redire.',
+  'Le support client est top, réponse en moins d\'une heure à chaque fois.',
+  'On a vu une nette amélioration de notre note Google depuis qu\'on utilise Dilypse.',
+  'Produit solide, équipe à l\'écoute. Exactement ce qu\'on cherchait.',
+  '',
+  '',
+];
+
+const neutralTexts = [
+  'Bon outil dans l\'ensemble. Quelques fonctionnalités manquent encore mais ça évolue.',
+  'Correcte mais pas exceptionnel. Le dashboard pourrait être plus rapide.',
+  'Le produit est bien, le prix un peu élevé pour les petites entreprises.',
+  'L\'outil est utile mais l\'interface pourrait être améliorée sur certains points.',
+  'Service correct, rien de spécial. Fait le job.',
+];
+
+const negativeTexts = [
+  'Déçu par le support client. Temps de réponse trop long.',
+  'L\'intégration avec Google My Business pose parfois des problèmes.',
+  'Prix trop élevé pour ce que c\'est. Il existe des alternatives moins chères.',
+  'Bug récurrents sur le dashboard. Ça crash au moins une fois par semaine.',
+  'Le produit a du potentiel mais c\'est encore trop instable pour un usage pro.',
+];
+
+const replyTexts = [
+  'Merci beaucoup pour votre retour ! Votre satisfaction est notre priorité.',
+  'Merci pour ces mots encourageants ! On transmet à l\'équipe.',
+  'Nous sommes ravis que notre outil vous fasse gagner du temps !',
+  'Merci pour votre confiance. N\'hésitez pas à nous contacter pour toute question.',
+  'Merci ! Le meilleur est à venir, on travaille sur de nouvelles fonctionnalités.',
+  'Nous prenons note de votre retour et travaillons activement à améliorer ce point.',
+  'Merci pour votre avis constructif. Notre équipe support va vous contacter.',
+];
+
+function seededRandom(seed) {
+  let s = seed;
+  return () => {
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
+const rand = seededRandom(42);
+const pick = (arr) => arr[Math.floor(rand() * arr.length)];
+
+const months = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+
+function genDate(daysAgo) {
+  const d = new Date(2026, 1, 20); // 20 feb 2026
+  d.setDate(d.getDate() - daysAgo);
+  return `${String(d.getDate()).padStart(2, '0')} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+export const reviews = [];
+
+for (let i = 0; i < 220; i++) {
+  const r = rand();
+  const rating = r < 0.08 ? 1 : r < 0.18 ? 2 : r < 0.28 ? 3 : r < 0.42 ? 4 : 5;
+  const textPool = rating >= 4 ? positiveTexts : rating === 3 ? neutralTexts : negativeTexts;
+  const reviewText = pick(textPool);
+  const daysAgo = Math.floor(rand() * 180);
+  const replied = rating >= 4 ? rand() > 0.2 : rand() > 0.6;
+
+  reviews.push({
+    id: i + 1,
+    reviewerName: `${pick(firstNames)} ${pick(lastNames)}`,
+    rating,
+    date: genDate(daysAgo),
+    text: reviewText,
+    ...(() => { const est = pick(establishmentData); return { businessName: est.name, businessAddress: est.address }; })(),
+    replied,
+    replyText: replied ? pick(replyTexts) : null,
+    replyDate: replied ? genDate(Math.max(0, daysAgo - Math.floor(rand() * 3))) : null,
+  });
+}
+
+// Sort by date desc (most recent first)
+reviews.sort((a, b) => b.id - a.id);

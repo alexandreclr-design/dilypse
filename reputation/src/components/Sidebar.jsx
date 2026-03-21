@@ -6,20 +6,24 @@ import {
   Share01Icon, BarChartIcon, Settings01Icon, Logout01Icon, ArrowRight02Icon,
   Analytics01Icon, Chart01Icon, Target01Icon,
 } from '@hugeicons/core-free-icons';
+import { background, text, foreground, border, radius, spacing, typographyTokens } from '../theme/tokens';
+
+const sp = spacing;
+const { size, weight } = typographyTokens;
 
 const s = {
   width: 256,
-  bg: '#FBFBFB',
-  borderColor: '#F0F0F0',
-  fg: '#6B6B6B',
-  fgActive: '#171717',
-  fgMuted: '#A0A0A0',
-  activeBg: '#F0F0F0',
-  hoverBg: '#F5F5F5',
+  bg: background.primarySolid,
+  borderColor: 'rgba(255,255,255,0.08)',
+  fg: 'rgba(255,255,255,0.55)',
+  fgActive: text.white,
+  fgMuted: 'rgba(255,255,255,0.35)',
+  activeBg: 'rgba(255,255,255,0.10)',
+  hoverBg: 'rgba(255,255,255,0.05)',
   itemH: 34,
   subItemH: 30,
   iconSize: 18,
-  radius: '8px',
+  radius: radius.md + 'px',
   transition: 'all 180ms ease',
 };
 
@@ -45,7 +49,7 @@ const NAV = [
   },
 ];
 
-function NavItem({ icon, label, active, children, activeItem, onNavigate }) {
+function NavItem({ icon, label, active, children, activeItem, onNavigate, badge }) {
   const hasChildren = children && children.length > 0;
   const isParentActive = hasChildren && children.some(c => c.id === activeItem);
   const [open, setOpen] = useState(isParentActive);
@@ -74,6 +78,17 @@ function NavItem({ icon, label, active, children, activeItem, onNavigate }) {
         }}>
           {label}
         </Typography>
+        {badge > 0 && (
+          <Box sx={{
+            minWidth: 18, height: 18, borderRadius: '9px',
+            bgcolor: background.errorSolid, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            px: '5px',
+          }}>
+            <Typography sx={{ fontSize: 10, fontWeight: weight.semibold, color: text.white, lineHeight: 1 }}>
+              {badge > 99 ? '99+' : badge}
+            </Typography>
+          </Box>
+        )}
         {hasChildren && (
           <Box sx={{ transition: s.transition, transform: open ? 'rotate(90deg)' : 'rotate(0deg)', display: 'flex', alignItems: 'center' }}>
             <HugeiconsIcon icon={ArrowRight02Icon} size={14} color={s.fgMuted} />
@@ -105,7 +120,7 @@ function NavItem({ icon, label, active, children, activeItem, onNavigate }) {
   );
 }
 
-export default function Sidebar({ activeItem = 'reputation' }) {
+export default function Sidebar({ activeItem = 'reputation', badges = {} }) {
   return (
     <Box sx={{
       width: s.width, height: '100vh', bgcolor: s.bg,
@@ -118,7 +133,7 @@ export default function Sidebar({ activeItem = 'reputation' }) {
         flex: 1, overflowY: 'auto', overflowX: 'hidden',
         display: 'flex', flexDirection: 'column', gap: '2px',
         '&::-webkit-scrollbar': { width: 4 },
-        '&::-webkit-scrollbar-thumb': { bgcolor: '#E0E0E0', borderRadius: 2 },
+        '&::-webkit-scrollbar-thumb': { bgcolor: 'rgba(255,255,255,0.12)', borderRadius: 2 },
       }}>
         {NAV.map((group) => (
           <Box key={group.label}>
@@ -132,7 +147,7 @@ export default function Sidebar({ activeItem = 'reputation' }) {
               <NavItem
                 key={item.id} icon={item.icon} label={item.label}
                 active={activeItem === item.id} children={item.children}
-                activeItem={activeItem}
+                activeItem={activeItem} badge={badges[item.id]}
               />
             ))}
           </Box>
@@ -155,7 +170,7 @@ export default function Sidebar({ activeItem = 'reputation' }) {
           cursor: 'pointer', transition: s.transition,
           '&:hover': { bgcolor: s.hoverBg },
         }}>
-          <Avatar sx={{ width: 30, height: 30, bgcolor: '#171717', fontSize: 11, fontWeight: 600, borderRadius: '8px' }}>
+          <Avatar sx={{ width: 30, height: 30, bgcolor: 'rgba(255,255,255,0.12)', fontSize: size.xs - 1, fontWeight: weight.semibold, borderRadius: radius.md + 'px', color: text.white, border: 'none' }}>
             AC
           </Avatar>
           <Box sx={{ overflow: 'hidden', flex: 1 }}>

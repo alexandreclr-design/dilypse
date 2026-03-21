@@ -152,10 +152,17 @@ export const background = {
   tertiary: '#EEEEEE',
   disabled: '#FAFAFA',
   overlay: '#000000',
+  // Brand
+  brandLight: '#EFF8FF',       // blue[50]  — light tint for chips, badges, active states
+  brandLightHover: '#D1E9FF',  // blue[100] — hover on light brand backgrounds
   brandSolid: '#1570EF',
   brandSolidHover: '#175CD3',
+  // Semantic status backgrounds
+  errorLight: '#FEF3F2',       // red[50]   — light tint for error badges
   errorSolid: '#D92D20',
+  warningLight: '#FFFAEB',     // yellow[50]
   warningSolid: '#DC6803',
+  successLight: '#ECFDF3',     // green[50] — light tint for success badges
   successSolid: '#039855',
 };
 
@@ -166,8 +173,11 @@ export const border = {
   tertiary: '#D1D1D1',
   disabled: '#D1D1D1',
   brand: '#2E90FA',
+  brandLight: '#B2DDFF',       // blue[200] — subtle brand border for chips, badges
   error: '#F04438',
+  errorLight: '#FECDCA',       // red[200]
   success: '#12B76A',
+  successLight: '#A6F4C5',     // green[200]
 };
 
 export const radius = {

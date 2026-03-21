@@ -9,18 +9,18 @@ import {
   ProfileIcon, GroupIcon, CreditCardIcon,
 } from '@hugeicons/core-free-icons';
 
-/* ─── Light theme tokens ─── */
+/* ─── Dark theme tokens (primarySolid) ─── */
 
 const s = {
   width: 256,
   widthCollapsed: 52,
-  bg: '#FBFBFB',
-  borderColor: '#F0F0F0',
-  fg: '#6B6B6B',
-  fgActive: '#171717',
-  fgMuted: '#A0A0A0',
-  activeBg: '#F0F0F0',
-  hoverBg: '#F5F5F5',
+  bg: '#0A0A0A',
+  borderColor: 'rgba(255,255,255,0.08)',
+  fg: 'rgba(255,255,255,0.55)',
+  fgActive: '#FFFFFF',
+  fgMuted: 'rgba(255,255,255,0.35)',
+  activeBg: 'rgba(255,255,255,0.10)',
+  hoverBg: 'rgba(255,255,255,0.05)',
   itemH: 34,
   subItemH: 30,
   iconSize: 18,
@@ -123,7 +123,7 @@ function UserFooter({ name, email, collapsed }) {
   if (collapsed) {
     return (
       <Tooltip title={name} placement="right" arrow>
-        <Avatar sx={{ width: 30, height: 30, bgcolor: '#171717', fontSize: 11, fontWeight: 600, borderRadius: '8px', cursor: 'pointer', mx: 'auto' }}>
+        <Avatar sx={{ width: 30, height: 30, bgcolor: 'rgba(255,255,255,0.12)', color: '#FFFFFF', fontSize: 11, fontWeight: 600, borderRadius: '8px', cursor: 'pointer', mx: 'auto' }}>
           {initials}
         </Avatar>
       </Tooltip>
@@ -131,7 +131,7 @@ function UserFooter({ name, email, collapsed }) {
   }
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', px: '10px', py: '8px', borderRadius: s.radius, cursor: 'pointer', transition: s.transition, '&:hover': { bgcolor: s.hoverBg } }}>
-      <Avatar sx={{ width: 30, height: 30, bgcolor: '#171717', fontSize: 11, fontWeight: 600, borderRadius: '8px' }}>
+      <Avatar sx={{ width: 30, height: 30, bgcolor: 'rgba(255,255,255,0.12)', color: '#FFFFFF', fontSize: 11, fontWeight: 600, borderRadius: '8px' }}>
         {initials}
       </Avatar>
       <Box sx={{ overflow: 'hidden', flex: 1 }}>
@@ -306,7 +306,7 @@ export const Overview = {
       <>
         <DocPage
           title="Sidebar"
-          description="La Sidebar est le composant de navigation principal de l'application. Elle organise les pages en groupes logiques avec des labels, supporte les sous-menus collapsibles, et inclut un user footer. Elle suit les guidelines shadcn/ui : structure 3 zones (content scrollable, footer sticky), items de 34px, icônes 18px, transitions 180ms."
+          description="La Sidebar est le composant de navigation principal de l'application. Fond dark (background.primarySolid #0A0A0A) avec texte blanc. Elle organise les pages en groupes logiques avec des labels, supporte les sous-menus collapsibles, et inclut un user footer. Structure 3 zones (content scrollable, footer sticky), items de 34px, icônes 18px, transitions 180ms."
           dos={[
             'Grouper les items par domaine fonctionnel avec un GroupLabel (ex : Platform, Gestion).',
             'Limiter les labels à 1–2 mots pour éviter le truncate.',
